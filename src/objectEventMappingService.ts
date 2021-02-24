@@ -6,7 +6,7 @@ export class ObjectEventMappingService {
   public toObjectEventREST(objectEvent: ObjectEvent): ObjectEventREST {
     return {
       topic: objectEvent.topic,
-      time: objectEvent.time,
+      time: objectEvent.time.toUTCString(),
       id: objectEvent.id,
       eventType: objectEvent.eventType,
       object: objectEvent.object,
@@ -18,7 +18,7 @@ export class ObjectEventMappingService {
   public fromObjectEventREST(restObjectEvent: ObjectEventREST): ObjectEvent {
     const inputObjectEvent: ObjectEvent = {
       topic: restObjectEvent.topic as string,
-      time: restObjectEvent.time as Date,
+      time: new Date(restObjectEvent.time as string),
       id: restObjectEvent.id as number,
       eventType: restObjectEvent.eventType as string,
       object: restObjectEvent.object as string,

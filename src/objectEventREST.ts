@@ -1,6 +1,6 @@
 export class ObjectEventREST {
   topic : string;
-  time: Date;
+  time: string;
   id: number;
   eventType: string;
   object: string;
