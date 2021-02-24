@@ -20,7 +20,7 @@ describe('ObjectEventMappingService', () => {
 			payload: new Map<string, string>([['a', 'bsad4'], ['b', 'adsada'], ['c', 'asd']])
 		};
 		const testObject: ObjectEventMappingService = new ObjectEventMappingService();
-		const returnValue = testObject.toObjectEvent(testObject.toObjectEventDB(sampleInput));
+		const returnValue = testObject.fromObjectEventREST(testObject.toObjectEventREST(sampleInput));
 		expect(returnValue.topic).to.equal(sampleInput.topic);
 		expect(returnValue.id).to.equal(sampleInput.id);
 		expect(returnValue.object).to.equal(sampleInput.object);
