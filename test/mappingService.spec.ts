@@ -1,15 +1,17 @@
 'use strict';
 
 import { expect } from 'chai';
-import { ObjectEventMappingService } from '../src/objectEventMappingService';
+import { MappingService } from '../src/mappingService';
 import { ObjectEvent } from '../src/objectEvent';
+import { Topic } from '../src/topic';
 
-describe('ObjectEventMappingService', () => {
+describe('MappingService', () => {
 	it('should create an instance using its constructor', () => {
-		const example: ObjectEventMappingService = new ObjectEventMappingService();
+		const example: MappingService = new MappingService();
 		expect(example, 'example should exist').to.exist; // tslint:disable-line:no-unused-expression
 	});
-	it('should return input after converting back and forth', () => {
+
+	it('should return input ObjectEvent after converting back and forth', () => {
 		const sampleInput: ObjectEvent = {
 			topic: 'randomTopic2§',
 			id: 5723,
@@ -19,7 +21,7 @@ describe('ObjectEventMappingService', () => {
 			time: new Date(2021, 1, 2, 11, 13, 44),
 			payload: new Map<string, string>([['a', 'bsad4'], ['b', 'adsada'], ['c', 'asd']])
 		};
-		const testObject: ObjectEventMappingService = new ObjectEventMappingService();
+		const testObject: MappingService = new MappingService();
 		const returnValue = testObject.fromObjectEventREST(testObject.toObjectEventREST(sampleInput));
 		expect(returnValue.topic).to.equal(sampleInput.topic);
 		expect(returnValue.id).to.equal(sampleInput.id);
@@ -28,5 +30,14 @@ describe('ObjectEventMappingService', () => {
 		expect(returnValue.eventType).to.equal(sampleInput.eventType);
 		expect(returnValue.time).to.deep.equals(sampleInput.time);
 		expect(returnValue.payload).to.deep.equal(sampleInput.payload);
+	});
+
+	it('should return input Topic after converting back and forth', () => {
+		const sampleTopic = new Topic('sampleId', 'sampleName', false);
+		const testObject = new MappingService();
+		const returnValue = testObject.fromTopicREST(testObject.toTopicREST(sampleTopic));
+		expect(returnValue.id).to.equal(sampleTopic.id);
+		expect(returnValue.isReadOnly).to.equal(sampleTopic.isReadOnly);
+		expect(returnValue.name).to.equal(sampleTopic.name);
 	});
 });

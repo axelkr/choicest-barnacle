@@ -1,8 +1,9 @@
 import { ObjectEvent } from './objectEvent';
 import { ObjectEventREST } from './objectEventREST';
+import { Topic } from './topic';
+import { TopicREST } from './topicREST';
 
-export class ObjectEventMappingService {
-
+export class MappingService {
   public toObjectEventREST(objectEvent: ObjectEvent): ObjectEventREST {
     return {
       topic: objectEvent.topic,
@@ -16,7 +17,7 @@ export class ObjectEventMappingService {
   }
 
   public fromObjectEventREST(restObjectEvent: ObjectEventREST): ObjectEvent {
-    const inputObjectEvent: ObjectEvent = {
+    return {
       topic: restObjectEvent.topic as string,
       time: new Date(restObjectEvent.time as string),
       id: restObjectEvent.id as number,
@@ -24,7 +25,18 @@ export class ObjectEventMappingService {
       object: restObjectEvent.object as string,
       objectType: restObjectEvent.objectType as string,
       payload: new Map<string, string>(JSON.parse(restObjectEvent.payload))
+    };
+  }
+
+  public toTopicREST(topic: Topic): TopicREST {
+    return {
+      id: topic.id,
+      name: topic.name,
+      isReadOnly: topic.isReadOnly
     }
-    return inputObjectEvent;
+  }
+
+  public fromTopicREST(topicREST: TopicREST): Topic {
+    return new Topic(topicREST.id, topicREST.name, topicREST.isReadOnly);
   }
 }
