@@ -5,5 +5,6 @@ export class ObjectEvent {
   eventType: string;
   object: string;
   objectType: string;
-  payload: Map<string,string>;
+  payload: Map<string, string>;
+  isTransient: boolean;
 }

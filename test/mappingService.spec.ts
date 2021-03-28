@@ -19,13 +19,15 @@ describe('MappingService', () => {
 			objectType: 'objtsahik24S',
 			eventType: ' hlkfaf',
 			time: new Date(2021, 1, 2, 11, 13, 44),
-			payload: new Map<string, string>([['a', 'bsad4'], ['b', 'adsada'], ['c', 'asd']])
+			payload: new Map<string, string>([['a', 'bsad4'], ['b', 'adsada'], ['c', 'asd']]),
+			isTransient: false
 		};
 		const testObject: MappingService = new MappingService();
 		const returnValue = testObject.fromObjectEventREST(testObject.toObjectEventREST(sampleInput));
 		expect(returnValue.topic).to.equal(sampleInput.topic);
 		expect(returnValue.id).to.equal(sampleInput.id);
 		expect(returnValue.object).to.equal(sampleInput.object);
+		expect(returnValue.isTransient).to.equal(sampleInput.isTransient);
 		expect(returnValue.objectType).to.equal(sampleInput.objectType);
 		expect(returnValue.eventType).to.equal(sampleInput.eventType);
 		expect(returnValue.time).to.deep.equals(sampleInput.time);

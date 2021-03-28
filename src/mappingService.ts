@@ -12,7 +12,8 @@ export class MappingService {
       eventType: objectEvent.eventType,
       object: objectEvent.object,
       objectType: objectEvent.objectType,
-      payload: JSON.stringify(Array.from(objectEvent.payload.entries()))
+      payload: JSON.stringify(Array.from(objectEvent.payload.entries())),
+      isTransient: objectEvent.isTransient
     }
   }
 
@@ -24,7 +25,8 @@ export class MappingService {
       eventType: restObjectEvent.eventType as string,
       object: restObjectEvent.object as string,
       objectType: restObjectEvent.objectType as string,
-      payload: new Map<string, string>(JSON.parse(restObjectEvent.payload))
+      payload: new Map<string, string>(JSON.parse(restObjectEvent.payload)),
+      isTransient: restObjectEvent.isTransient
     };
   }
 

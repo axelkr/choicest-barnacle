@@ -1,9 +1,10 @@
 export class ObjectEventREST {
-  topic : string;
+  topic: string;
   time: string;
   id: number;
   eventType: string;
   object: string;
   objectType: string;
   payload: string;
+  isTransient: boolean;
 }

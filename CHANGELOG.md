@@ -1,3 +1,6 @@
+# v2.3.0
+- objectEvent now have a property isTransient, i.e. whether they should be persisted or stay transient. Please use persisted as a default, as that will be the correct choice in the majority of events.
+
 # v2.2.0
 - provide mapping for transferring a topic via REST
 
