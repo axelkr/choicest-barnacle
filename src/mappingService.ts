@@ -33,12 +33,11 @@ export class MappingService {
   public toTopicREST(topic: Topic): TopicREST {
     return {
       id: topic.id,
-      name: topic.name,
-      isReadOnly: topic.isReadOnly
+      name: topic.name
     }
   }
 
   public fromTopicREST(topicREST: TopicREST): Topic {
-    return new Topic(topicREST.id, topicREST.name, topicREST.isReadOnly);
+    return new Topic(topicREST.id, topicREST.name);
   }
 }

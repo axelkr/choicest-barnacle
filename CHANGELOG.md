@@ -1,3 +1,6 @@
+# 2.5.0
+- undo change from 2.1.0. It's the wrong abstraction that's using it 
+
 # 2.4.0
 - service available for shifting object events to a specific point in time
 

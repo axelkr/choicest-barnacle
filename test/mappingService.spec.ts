@@ -35,11 +35,10 @@ describe('MappingService', () => {
 	});
 
 	it('should return input Topic after converting back and forth', () => {
-		const sampleTopic = new Topic('sampleId', 'sampleName', false);
+		const sampleTopic = new Topic('sampleId', 'sampleName');
 		const testObject = new MappingService();
 		const returnValue = testObject.fromTopicREST(testObject.toTopicREST(sampleTopic));
 		expect(returnValue.id).to.equal(sampleTopic.id);
-		expect(returnValue.isReadOnly).to.equal(sampleTopic.isReadOnly);
 		expect(returnValue.name).to.equal(sampleTopic.name);
 	});
 });
