@@ -1,6 +1,5 @@
 'use strict';
 
-import { expect } from 'chai';
 import { MappingService } from '../src/mappingService';
 import { ObjectEvent } from '../src/objectEvent';
 import { Topic } from '../src/topic';
@@ -8,7 +7,7 @@ import { Topic } from '../src/topic';
 describe('MappingService', () => {
 	it('should create an instance using its constructor', () => {
 		const example: MappingService = new MappingService();
-		expect(example, 'example should exist').to.exist; // tslint:disable-line:no-unused-expression
+		expect(example).toBeDefined();
 	});
 
 	it('should return input ObjectEvent after converting back and forth', () => {
@@ -24,21 +23,21 @@ describe('MappingService', () => {
 		};
 		const testObject: MappingService = new MappingService();
 		const returnValue = testObject.fromObjectEventREST(testObject.toObjectEventREST(sampleInput));
-		expect(returnValue.topic).to.equal(sampleInput.topic);
-		expect(returnValue.id).to.equal(sampleInput.id);
-		expect(returnValue.object).to.equal(sampleInput.object);
-		expect(returnValue.isTransient).to.equal(sampleInput.isTransient);
-		expect(returnValue.objectType).to.equal(sampleInput.objectType);
-		expect(returnValue.eventType).to.equal(sampleInput.eventType);
-		expect(returnValue.time).to.deep.equals(sampleInput.time);
-		expect(returnValue.payload).to.deep.equal(sampleInput.payload);
+		expect(returnValue.topic).toEqual(sampleInput.topic);
+		expect(returnValue.id).toEqual(sampleInput.id);
+		expect(returnValue.object).toEqual(sampleInput.object);
+		expect(returnValue.isTransient).toEqual(sampleInput.isTransient);
+		expect(returnValue.objectType).toEqual(sampleInput.objectType);
+		expect(returnValue.eventType).toEqual(sampleInput.eventType);
+		expect(returnValue.time).toEqual(sampleInput.time);
+		expect(returnValue.payload).toEqual(sampleInput.payload);
 	});
 
 	it('should return input Topic after converting back and forth', () => {
 		const sampleTopic = new Topic('sampleId', 'sampleName');
 		const testObject = new MappingService();
 		const returnValue = testObject.fromTopicREST(testObject.toTopicREST(sampleTopic));
-		expect(returnValue.id).to.equal(sampleTopic.id);
-		expect(returnValue.name).to.equal(sampleTopic.name);
+		expect(returnValue.id).toEqual(sampleTopic.id);
+		expect(returnValue.name).toEqual(sampleTopic.name);
 	});
 });

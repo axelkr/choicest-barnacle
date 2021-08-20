@@ -1,6 +1,5 @@
 'use strict';
 
-import { expect } from 'chai';
 import { ModificationService } from '../src/modificationService';
 import { ObjectEvent } from '../src/objectEvent';
 
@@ -10,7 +9,7 @@ describe('ModificationService', () => {
 		const objectEvent: ObjectEvent = generateValidObjectEvent();
 		const moveToDate = new Date(2020, 10, 10, 10, 10);
 		const testObject = new ModificationService();
-		expect(testObject.adjustTime(objectEvent, moveToDate).time).to.deep.equals(moveToDate);
+		expect(testObject.adjustTime(objectEvent, moveToDate).time).toEqual(moveToDate);
 	});
 
 	it('if several objectEvents are given, the first object is moved to the given date', () => {
@@ -23,7 +22,7 @@ describe('ModificationService', () => {
 		const moveToDate = new Date(2020, 3, 3, 3, 3);
 		const testObject = new ModificationService();
 		const result = testObject.adjustTimes([anEvent, laterEvent], moveToDate);
-		expect(result[0].time).to.deep.equals(moveToDate);
+		expect(result[0].time).toEqual(moveToDate);
 	});
 
 	it('if several objectEvents are given, the offset between them stays the same', () => {
@@ -36,7 +35,7 @@ describe('ModificationService', () => {
 		const moveToDate = new Date(2020, 3, 3, 3, 3);
 		const testObject = new ModificationService();
 		const result = testObject.adjustTimes([anEvent, laterEvent], moveToDate);
-		expect(Math.round(result[1].time.getTime() - result[0].time.getTime()) / (1000 * 60)).to.equal(2);
+		expect(Math.round(result[1].time.getTime() - result[0].time.getTime()) / (1000 * 60)).toEqual(2);
 	});
 });
 

@@ -1,3 +1,6 @@
+# 2.5.1
+- move to jest as this resolves a typing problem with mocha and ts-node
+
 # 2.5.0
 - undo change from 2.1.0. It's the wrong abstraction that's using it 
 
